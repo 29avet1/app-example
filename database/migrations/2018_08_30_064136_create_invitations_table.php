@@ -24,10 +24,10 @@ class CreateInvitationsTable extends Migration
             $table->timestamp('expires_at');
             $table->timestamps();
 
+            $table->unique(['team_id', 'email']);
             $table->index('uuid');
             $table->index('token');
             $table->index('email');
-            $table->unique(['team_id', 'email']);
         });
 
         Schema::table('invitations', function (Blueprint $table) {

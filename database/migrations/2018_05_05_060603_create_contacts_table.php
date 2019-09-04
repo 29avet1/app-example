@@ -17,22 +17,18 @@ class CreateContactsTable extends Migration
             $table->increments('id');
             $table->uuid('uuid')->unique();
             $table->unsignedInteger('team_id');
-            $table->string('phone', 30);
-            $table->string('email')->nullable();
+            $table->string('phone', 30)->unique();
+            $table->string('email')->nullable()->unique();
             $table->string('name')->nullable();
             $table->string('avatar')->nullable();
             $table->json('meta_data')->nullable();
-            $table->timestamp('unsubscribed_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->unique('phone');
-            $table->unique('email');
             $table->index('uuid');
             $table->index('name');
             $table->index('phone');
             $table->index('email');
-            $table->index('unsubscribed_at');
         });
 
         Schema::table('contacts', function (Blueprint $table) {

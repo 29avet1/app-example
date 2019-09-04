@@ -26,7 +26,6 @@ class CreateInvoicesTable extends Migration
             $table->decimal('shipping_cost')->nullable();
             $table->decimal('refunded_amount')->nullable();
             $table->text('message')->nullable();
-            $table->boolean('shipping')->default(false);
             $table->timestamp('paid_at')->nullable();
             $table->timestamp('refunded_at')->nullable();
             $table->timestamps();
